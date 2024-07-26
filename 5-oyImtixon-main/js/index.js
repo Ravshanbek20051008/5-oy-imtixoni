@@ -1,5 +1,6 @@
-import { createCard } from "./function.js";
+import { createCard, createCard2 } from "./function.js";
 const wrapper = document.querySelector("#wrapper");
+const wrapper1 = document.querySelector("#wrapper1");
 const loader = document.querySelector("#loader");
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -14,6 +15,12 @@ document.addEventListener("DOMContentLoaded", function () {
         data.forEach(function (product) {
           let card = createCard(product);
           wrapper.innerHTML += card;
+        });
+      }
+      if (data.length) {
+        data.forEach(function (product) {
+          let card = createCard2(product);
+          wrapper1.innerHTML += card;
         });
       }
       let cards = document.querySelectorAll(".card");

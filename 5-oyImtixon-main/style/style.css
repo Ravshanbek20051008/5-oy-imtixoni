@@ -415,12 +415,12 @@ header .nav-list ul {
   background: #090808;
 }
 
-.zamok--list {
+.wrapper1 {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.zamok--list p {
+.wrapper1 p {
   margin-top: 280px;
 }
 
