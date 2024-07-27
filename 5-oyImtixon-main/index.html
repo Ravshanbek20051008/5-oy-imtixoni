@@ -23,6 +23,7 @@
         <div class="nav-list">
           <ul>
             <li><a href="#">Главная</a></li>
+
             <li>
               <a class="ulmain" href="#"
                 >Каталог <img src="img/Frame.png" alt=""
@@ -54,7 +55,6 @@
           </div>
           <div class="btn2">
             <select class="Популярности" id="btn2">
-              <!-- <option value="Популярности" selected>Популярности</option> -->
               <option value="не популярен">не популярен</option>
               <option value="известный">известный</option>
               <option value="средний">средний</option>
@@ -69,9 +69,10 @@
               <img src="img/Vector (1).png" alt="" />
             </div>
             <div class="inputt">
-              <input type="number" placeholder="min $" />
-              <input type="number" placeholder="max $" />
+              <input type="text" id="minPrice" placeholder="min $" />
+              <input type="text" id="maxPrice" placeholder="max $" />
             </div>
+            <div id="Filtr"><button id="Filter">Filter</button></div>
             <hr />
             <div class="summa1">
               <h3>Особенности</h3>
@@ -101,76 +102,7 @@
     <div class="nedavno" id="nedavno">
       <div class="container nedavno__container">
         <h1>Вы недавно просмотрели</h1>
-        <div class="wrapper1" id="wrapper1">
-          <div class="card qulf1">
-            <img src="img/Rectangle 19 (4).png" alt="" />
-            <div class="box1">
-              <h4><span>X</span>Нет в наличии</h4>
-              <button>SALE</button>
-            </div>
-            <div class="box2">
-              <button><img src="img/gift 1.svg" alt="gif" />Подарок</button>
-            </div>
-            <div class="izoh">
-              <p>Вариативный замок Golden Soft для отеля</p>
-              <div class="narxi">
-                <h3>33 000₽</h3>
-                <h3>37 000₽</h3>
-              </div>
-            </div>
-          </div>
-          <div class="card qulf1">
-            <img src="img/Rectangle 19.png" alt="" />
-            <div class="box1">
-              <h4><span>X</span>Нет в наличии</h4>
-              <button>SALE</button>
-            </div>
-            <div class="box2">
-              <button><img src="img/gift 1.svg" alt="gif" />Подарок</button>
-            </div>
-            <div class="izoh">
-              <p>Вариативный замок Golden Soft для отеля</p>
-              <div class="narxi">
-                <h3>7 000₽</h3>
-                <h3>8 000₽</h3>
-              </div>
-            </div>
-          </div>
-          <div class="card qulf1">
-            <img src="img/Rectangle 19 (1).png" alt="" />
-            <div class="box1">
-              <h4><span>X</span>Нет в наличии</h4>
-              <button>SALE</button>
-            </div>
-            <div class="box2">
-              <button><img src="img/gift 1.svg" alt="gif" />Подарок</button>
-            </div>
-            <div class="izoh">
-              <p>Вариативный замок Golden Soft для отеля</p>
-              <div class="narxi">
-                <h3>33 000₽</h3>
-                <h3>30 000₽</h3>
-              </div>
-            </div>
-          </div>
-          <div class="card qulf1">
-            <img src="img/Rectangle 19 (3).png" alt="" />
-            <div class="box1">
-              <h4><span>X</span>Нет в наличии</h4>
-              <button>SALE</button>
-            </div>
-            <div class="box2">
-              <button><img src="img/gift 1.svg" alt="gif" />Подарок</button>
-            </div>
-            <div class="izoh">
-              <p>Вариативный замок Golden Soft для отеля</p>
-              <div class="narxi">
-                <h3>9 000₽</h3>
-                <h3>12 000₽</h3>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="wrapper1" id="wrapper1"></div>
       </div>
     </div>
     <div class="ovozliqulf">

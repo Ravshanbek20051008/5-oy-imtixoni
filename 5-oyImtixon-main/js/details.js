@@ -1,67 +1,70 @@
 const image = document.querySelector("#image");
 const name = document.querySelector("#name");
-const newprise = document.querySelector("#newprise");
-const oldprise = document.querySelector("#oldprise");
+const newPriceElem = document.querySelector("#newprise");
+const oldPriceElem = document.querySelector("#oldprise");
 const loader = document.querySelector("#loader");
 const wrapper = document.querySelector("#wrapper");
-const addtobag = document.querySelector("#add-to-bag");
+const addToBagBtn = document.querySelector("#add-to-bag");
 
-function getDatafromcard() {
-  let data = [];
-  if (localStorage.getItem("cart")) {
-    data = JSON.parse(localStorage.getItem("cart"));
+async function fetchProductData(id) {
+  try {
+    const response = await fetch(
+      `https://cars-pagination.onrender.com/products/${id}`
+    );
+    if (response.status === 200) {
+      return await response.json();
+    }
+  } catch (error) {
+    console.error(error);
+    return null;
   }
-  return data;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  let url = window.location.href;
-  let id = url.split("id=")[1];
-  console.log(id);
-  if (id) {
-    fetch(`https://cars-pagination.onrender.com/products/${id}`)
-      .then((res) => {
-        if (res.status == 200) {
-          return res.json();
-        }
-      })
-      .then((data) => {
-        if (data.id) {
-          image.setAttribute("src", data.image);
-          name.innerHTML = data.name;
-          newprise.innerHTML = "$" + data.newPrice;
-          oldprise.innerHTML = "$" + data.oldPrice;
+function getDataFromCart() {
+  const cartData = localStorage.getItem("cart");
+  return cartData ? JSON.parse(cartData) : [];
+}
 
-          addtobag.addEventListener("click", function (event) {
-            event.preventDefault();
-            let product = {
-              id: data.id,
-              name: data.name,
-              newPrice: data.newPrice,
-              image: data.image,
-            };
-            let datacard = getDatafromcard();
-            let isexsit = datacard.find(function (el) {
-              return el.id == data.id;
-            });
-            if (!isexsit) {
-              datacard.push(product);
-            }
-            localStorage.setItem("cart", JSON.stringify(datacard));
-            window.location.assign(
-              "http://127.0.0.1:5500/5-oyImtixon-main/page/cart.html"
-            );
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-      .finally(function () {
-        wrapper.style.display = "flex";
-        loader.remove();
+function addToCart(product) {
+  const cartData = getDataFromCart();
+  const exists = cartData.some((item) => item.id === product.id);
+
+  if (!exists) {
+    cartData.push(product);
+    localStorage.setItem("cart", JSON.stringify(cartData));
+  }
+}
+
+document.addEventListener("DOMContentLoaded", async function () {
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
+
+  if (id) {
+    const data = await fetchProductData(id);
+
+    if (data) {
+      image.setAttribute("src", data.image);
+      name.textContent = data.name;
+      newPriceElem.textContent = `$${data.newPrice}`;
+      oldPriceElem.textContent = `$${data.oldPrice}`;
+
+      addToBagBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        const product = {
+          id: data.id,
+          name: data.name,
+          newPrice: data.newPrice,
+          image: data.image,
+        };
+        addToCart(product);
+        window.location.assign(
+          "http://127.0.0.1:5500/5-oyImtixon-main/page/cart.html"
+        );
       });
+    }
   } else {
     window.location.assign("http://127.0.0.1:5500/5-oyImtixon-main/index.html");
   }
+  wrapper.style.display = "flex";
+  loader.remove();
 });

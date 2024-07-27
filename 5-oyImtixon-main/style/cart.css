@@ -140,6 +140,7 @@ header .nav-list ul {
   width: 836px;
   background-color: #ffffff;
   margin: 80px auto;
+  box-shadow: 2px 3px 12px 7px rgba(34, 60, 80, 0.19);
 }
 
 .karzinka {
@@ -222,7 +223,7 @@ header .nav-list ul {
 .buyurtma-title h2 {
   font-family: SF Pro Text;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 30px;
   color: #161c24;
   margin-left: 8px;
