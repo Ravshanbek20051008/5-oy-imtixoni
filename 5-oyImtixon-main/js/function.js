@@ -44,7 +44,7 @@ function createCard2(data) {
         <p>${data.name}</p>
         <div class="narxi">
           <h3>$${data.newPrice}</h3>
-          <h3>$${data.oldPrice}</h3>
+          <h3 class="narx-h3">$${data.oldPrice}</h3>
         </div>
       </div>
     </div>
