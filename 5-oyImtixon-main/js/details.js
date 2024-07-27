@@ -1,4 +1,4 @@
-// const image = document.querySelector("#image");
+const image = document.querySelector("#image");
 const name = document.querySelector("#name");
 const newprise = document.querySelector("#newprise");
 const oldprise = document.querySelector("#oldprise");
@@ -44,11 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let isexsit = datacard.find(function (el) {
               return el.id == data.id;
             });
-            if (isexsit) {
-              datacard = datacard.map(function (el) {
-                return el;
-              });
-            } else {
+            if (!isexsit) {
               datacard.push(product);
             }
             localStorage.setItem("cart", JSON.stringify(datacard));
